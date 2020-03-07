@@ -46,7 +46,10 @@ class App extends Component {
             </Request>
           )}
         />
-        <Route path="/chat" component={Chatroom} />
+        <Route 
+          path="/chat" 
+          component={Chatroom} 
+        />
       </div>
     );
   }
