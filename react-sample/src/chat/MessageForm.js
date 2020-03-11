@@ -8,11 +8,13 @@ class MessageForm extends Component {
     onSubmit = e => {
         e.preventDefault();
         //send message โดยไม่ reload (กระพริบ) ระหว่างการส่ง
-        this.props.onMessageSend({text: this.state.text, member: "FutureSkill"});
+        this.props.onMessageSend({
+            text: this.state.text, 
+            member: this.props.currentMember});
     }
     onChange = e => {
         this.setState({text: e.target.value});
-    };
+    }; //เก็บข้อความไว้ใน 'text'
     render() {
         return (
             <form onSubmit={this.onSubmit}>

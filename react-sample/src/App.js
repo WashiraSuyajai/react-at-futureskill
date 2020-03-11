@@ -6,6 +6,7 @@ import { Route, Link } from 'react-router-dom';
 import Request from './lib/Request';
 import Count from './chat/Count';
 import Chatroom from './chat/Chatroom';
+import Chatform from './chat/Chatform';
 class App extends Component {
 
   state = {
@@ -49,7 +50,8 @@ class App extends Component {
           )}
         />
         <Route path="/count" component={Count} />
-        <Route path="/chat" component={Chatroom} />
+        <Route path="/chat" component={Chatform} />
+        <Route path="/chatroom" component={Chatroom} />
       </div>
     );
   }

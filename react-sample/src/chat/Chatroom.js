@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import socketIOClient from 'socket.io-client';
 import MessageList from './MessageList';
 import MessageForm from './MessageForm';
+import { Redirect } from 'react-router-dom';
 
 class Chatroom extends Component {
     state = {
@@ -17,10 +18,16 @@ class Chatroom extends Component {
         this.setState({ messages: [...this.state.messages, { ...message }]});
     };
     render() {
+        
+        if(this.props.location.name == null) {
+            return <Redirect to="/chat"/>
+        }; //ถ้าไม่มีการใส่ชื่อใน props location.name แล้ว จะ redirect ไปหาหน้า chat อีกครั้ง
+
+        const { name } = this.props.location;
         return (
             <div>
                 <MessageList messages={this.state.messages}/>
-                <MessageForm onMessageSend={this.onMessageSend}/>
+                <MessageForm onMessageSend={this.onMessageSend} currentMember={ name }/>
             </div>
         )
     }
