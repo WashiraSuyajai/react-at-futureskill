@@ -4,6 +4,7 @@ import User from './user/User';
 import Post from './post/Post';
 import { Route, Link } from 'react-router-dom';
 import Request from './lib/Request';
+import Count from './chat/Count';
 import Chatroom from './chat/Chatroom';
 class App extends Component {
 
@@ -27,6 +28,7 @@ class App extends Component {
         <Link to="/">Home</Link>
           <Link to="/users">Users</Link>
           <Link to="/posts">Posts</Link>
+          <Link to="/count">Count</Link>
           <Link to="/chat">Chat</Link>
         </div>
         
@@ -46,10 +48,8 @@ class App extends Component {
             </Request>
           )}
         />
-        <Route 
-          path="/chat" 
-          component={Chatroom} 
-        />
+        <Route path="/count" component={Count} />
+        <Route path="/chat" component={Chatroom} />
       </div>
     );
   }
