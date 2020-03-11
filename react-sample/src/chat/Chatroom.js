@@ -21,7 +21,7 @@ class Chatroom extends Component {
         
         if(this.props.location.name == null) {
             return <Redirect to="/chat"/>
-        }; //ถ้าไม่มีการใส่ชื่อใน props location.name แล้ว จะ redirect ไปหาหน้า chat อีกครั้ง
+        }; //ถ้ามีการใส่ url ไปหา /chatroom โดยตรงแล้ว แล้ว จะ redirect ไปหาหน้า chat อีกครั้ง
 
         const { name } = this.props.location;
         return (
