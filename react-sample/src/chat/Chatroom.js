@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 
 class Chatroom extends Component {
     state = {
+        socket: null,
         messages: [
             {text: "Hi", member: "FutureSkill"},
             {text: "Hi", member: "Mark"},
@@ -14,9 +15,24 @@ class Chatroom extends Component {
         ]
     };
 
+    componentDidMount() {
+        if(this.state.socket == null) {
+            const socket = socketIOClient("http://localhost:8080");
+            socket.on("message", (message) =>{
+                this.addMessage(message);
+            });
+            this.setState({ socket : socket});
+        }
+        
+    }
+
     onMessageSend = message => {
-        this.setState({ messages: [...this.state.messages, { ...message }]});
+        this.addMessage(message);
     };
+
+    addMessage = message => {
+        this.setState({ messages: [...this.state.messages, { ...message }]});
+    }
     render() {
         
         if(this.props.location.name == null) {
