@@ -5,8 +5,9 @@ class Message extends Component {
         const { message } =this.props;
         return (
             <li>
-                <div>
-                    <div>{message.member} : {message.text}</div>
+                <div className="Message-content">
+                    <div className="username">{message.member}</div>
+                    <div className="text">{message.text}</div>
                 </div>
             </li>
         );
