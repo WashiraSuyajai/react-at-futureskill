@@ -28,10 +28,12 @@ class Chatroom extends Component {
 
     onMessageSend = message => {
         this.addMessage(message);
+
+        this.state.socket.emit("emitChat", { ...message });
     };
 
     addMessage = message => {
-        this.setState({ messages: [...this.state.messages, { ...message }]});
+        this.setState({ messages: [...this.state.messages, { ...message }] });
     }
     render() {
         
