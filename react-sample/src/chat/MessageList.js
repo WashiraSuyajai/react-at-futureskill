@@ -5,7 +5,7 @@ class MessageList extends Component {
     render() {
         const { messages } = this.props;
         return messages.map(message_naja => (
-            <ul>
+            <ul className="Message-list">
                 <Message message={message_naja}/>
 
             </ul>
